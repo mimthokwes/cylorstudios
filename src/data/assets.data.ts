@@ -2,20 +2,19 @@ import type { RobloxAsset } from '../types/portfolio.types';
 
 export const ASSETS_DATA: RobloxAsset[] = [
   {
-    id: 'scifi-lobby',
-    title: 'Neo-Vanguard Sci-Fi Lobby',
-    category: 'Sci-Fi',
-    description: 'Central hub futuristik untuk RPG cyberpunk & simulator Roblox. Part teroptimasi.',
+    id: 'alfamart',
+    title: 'Minimarket Alfamart',
+    category: 'Commercial',
+    description: 'Bangunan Alfamart modern lengkap dengan fasad merah-kuning ikonik, kanopi kaca, rak etalase belanja, dan tekstur part realistis.',
     stats: {
-      partsCount: '1,240 Parts',
-      dimensions: '160x160 Studs',
-      fileFormat: '.rbxm / .obj',
+      partsCount: '1,850+ Parts',
+      dimensions: '90x65 Studs',
+      fileFormat: '.obj & Tekstur',
     },
-    priceLabel: '$14.99 (Rp 185.000)',
-    thumbnailUrl: '/thumbnails/scifi-lobby.svg',
+    thumbnailUrl: '/thumbnails/alfamart.svg',
     modelPaths: {
-      obj: '/models/scifi-lobby/model.obj',
-      mtl: '/models/scifi-lobby/model.mtl',
+      obj: '/model building roblos/alfamart/.obj/alfamart.obj',
+      mtl: '/model building roblos/alfamart/.obj/alfamart.mtl',
     },
     externalLinks: {
       builtByBitUrl: 'https://builtbybit.com/resources/roblox',
@@ -23,20 +22,39 @@ export const ASSETS_DATA: RobloxAsset[] = [
     },
   },
   {
-    id: 'medieval-tavern',
-    title: 'The Oak & Flagon Tavern',
-    category: 'Traditional',
-    description: 'Tavern medieval fantasy dengan timber frame, cerobong batu, & interior modular.',
+    id: 'rumah-1',
+    title: 'Rumah Modern Minimalis 1',
+    category: 'Residential',
+    description: 'Hunian modern minimalis tropis 1 lantai beraksen kayu elegan, dilengkapi carport luas, teras depan, dan jendela kaca panoramik.',
     stats: {
-      partsCount: '860 Parts',
-      dimensions: '85x95 Studs',
-      fileFormat: '.rbxm / .obj',
+      partsCount: '1,650+ Parts',
+      dimensions: '80x70 Studs',
+      fileFormat: '.obj & Tekstur',
     },
-    priceLabel: '$9.99 (Rp 120.000)',
-    thumbnailUrl: '/thumbnails/medieval-tavern.svg',
+    thumbnailUrl: '/thumbnails/rumah-1.svg',
     modelPaths: {
-      obj: '/models/medieval-tavern/model.obj',
-      mtl: '/models/medieval-tavern/model.mtl',
+      obj: '/model building roblos/rumah 1/.obj/r1.obj',
+      mtl: '/model building roblos/rumah 1/.obj/r1.mtl',
+    },
+    externalLinks: {
+      builtByBitUrl: 'https://builtbybit.com/resources/roblox',
+      fastworkUrl: 'https://fastwork.id/user/cylorstudios',
+    },
+  },
+  {
+    id: 'kopdes',
+    title: 'Koperasi Desa (Kopdes)',
+    category: 'Commercial',
+    description: 'Bangunan toko koperasi unit desa bernuansa hijau dengan rolling door besi, kanopi teras, dan etalase komersial serba guna warga desa.',
+    stats: {
+      partsCount: '1,150+ Parts',
+      dimensions: '75x60 Studs',
+      fileFormat: '.obj & Tekstur',
+    },
+    thumbnailUrl: '/thumbnails/kopdes.svg',
+    modelPaths: {
+      obj: '/model building roblos/kopdes/.obj/kopdes.obj',
+      mtl: '/model building roblos/kopdes/.obj/kopdes.mtl',
     },
     externalLinks: {
       builtByBitUrl: 'https://builtbybit.com/resources/roblox',

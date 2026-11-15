@@ -1,4 +1,4 @@
-export type BuildCategory = 'All' | 'Low-Poly' | 'Realistic' | 'Sci-Fi' | 'Traditional';
+export type BuildCategory = 'All' | 'Commercial' | 'Residential';
 
 export interface RobloxAsset {
   id: string;
@@ -10,11 +10,10 @@ export interface RobloxAsset {
     dimensions: string;      // Contoh: "120x120 Studs"
     fileFormat: string;      // Contoh: ".rbxm / .obj"
   };
-  priceLabel: string;        // Contoh: "$12.00" atau "Rp 150.000"
   thumbnailUrl: string;      // Path ke /thumbnails/...
   modelPaths: {
-    obj: string;             // Path ke /models/.../model.obj
-    mtl: string;             // Path ke /models/.../model.mtl
+    obj: string;             // Path ke OBJ
+    mtl: string;             // Path ke MTL
   };
   externalLinks: {
     builtByBitUrl: string;   // Link langsung ke halaman produk BuiltByBit
@@ -28,6 +27,5 @@ export interface ServicePackage {
   tierLabel: string;         // Contoh: "Popular"
   summary: string;
   deliverables: string[];    // Poin fitur yang didapat klien
-  startingPrice: string;     // Contoh: "Mulai Rp 100.000"
   estimatedTime: string;     // Contoh: "2 - 4 Hari"
 }

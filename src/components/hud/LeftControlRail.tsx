@@ -30,16 +30,16 @@ export function LeftControlRail({
 }: LeftControlRailProps) {
   return (
     // Diposisikan rapi di sisi kiri atas dengan gaya Frosted Glass Transparan
-    <aside className="absolute left-4 sm:left-6 top-20 sm:top-24 z-20 flex flex-col gap-3 pointer-events-auto">
+    <aside className="absolute left-3 sm:left-6 top-24 sm:top-24 z-20 flex flex-col gap-2.5 pointer-events-auto">
       {/* 3D Viewport Controls Vertical Pill */}
-      <div className="flex flex-col items-center gap-2 p-2 rounded-full bg-white/45 backdrop-blur-3xl border border-white/60 shadow-[0_15px_35px_rgba(2,132,199,0.18)] text-slate-800">
+      <div className="flex flex-col items-center gap-1.5 p-1.5 sm:p-2 rounded-full bg-white/55 backdrop-blur-3xl border border-white/70 shadow-[0_12px_30px_rgba(2,132,199,0.18)] text-slate-800">
         {/* Reset Camera */}
         <button
           onClick={onResetCamera}
           title="Reset Sudut Kamera"
-          className="group relative p-2.5 rounded-full hover:bg-white/60 hover:text-slate-950 transition-colors"
+          className="group relative p-2 sm:p-2.5 rounded-full hover:bg-white/60 hover:text-slate-950 transition-colors"
         >
-          <RotateCcw className="w-4 h-4 transition-transform group-hover:-rotate-45" />
+          <RotateCcw className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:-rotate-45" />
           <span className="absolute left-full ml-3 px-2 py-1 rounded-md bg-slate-900 text-[10px] text-white font-medium whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg">
             Reset Kamera
           </span>
@@ -49,13 +49,17 @@ export function LeftControlRail({
         <button
           onClick={onToggleAutoRotate}
           title={autoRotate ? 'Jeda Putaran' : 'Putar Otomatis'}
-          className={`group relative p-2.5 rounded-full transition-colors ${
+          className={`group relative p-2 sm:p-2.5 rounded-full transition-colors ${
             autoRotate
               ? 'bg-slate-900 text-white shadow-sm'
               : 'hover:bg-white/60 hover:text-slate-950'
           }`}
         >
-          {autoRotate ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+          {autoRotate ? (
+            <Pause className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          ) : (
+            <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+          )}
           <span className="absolute left-full ml-3 px-2 py-1 rounded-md bg-slate-900 text-[10px] text-white font-medium whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg">
             {autoRotate ? 'Jeda Putaran' : 'Putar 360°'}
           </span>
@@ -65,13 +69,13 @@ export function LeftControlRail({
         <button
           onClick={onToggleGrid}
           title="Tampilkan Garis Grid"
-          className={`group relative p-2.5 rounded-full transition-colors ${
+          className={`group relative p-2 sm:p-2.5 rounded-full transition-colors ${
             showGrid
               ? 'bg-slate-900 text-white shadow-sm'
               : 'hover:bg-white/60 hover:text-slate-950'
           }`}
         >
-          <Grid className="w-4 h-4" />
+          <Grid className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span className="absolute left-full ml-3 px-2 py-1 rounded-md bg-slate-900 text-[10px] text-white font-medium whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg">
             Toggle Grid
           </span>
@@ -81,21 +85,21 @@ export function LeftControlRail({
         <button
           onClick={onToggleWireframe}
           title="Tampilkan Wireframe Mesh"
-          className={`group relative p-2.5 rounded-full transition-colors ${
+          className={`group relative p-2 sm:p-2.5 rounded-full transition-colors ${
             wireframe
               ? 'bg-amber-500 text-white shadow-sm'
               : 'hover:bg-white/60 hover:text-slate-950'
           }`}
         >
-          <Box className="w-4 h-4" />
+          <Box className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span className="absolute left-full ml-3 px-2 py-1 rounded-md bg-slate-900 text-[10px] text-white font-medium whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg">
             Roblox Wireframe
           </span>
         </button>
       </div>
 
-      {/* External Platforms Vertical Pill */}
-      <div className="flex flex-col items-center gap-2 p-2 rounded-full bg-white/45 backdrop-blur-3xl border border-white/60 shadow-[0_15px_35px_rgba(2,132,199,0.18)] text-slate-800">
+      {/* External Platforms Vertical Pill (Desktop Only) */}
+      <div className="hidden sm:flex flex-col items-center gap-2 p-2 rounded-full bg-white/45 backdrop-blur-3xl border border-white/60 shadow-[0_15px_35px_rgba(2,132,199,0.18)] text-slate-800">
         {/* WhatsApp */}
         <a
           href={STUDIO_CONFIG.socials.whatsapp}

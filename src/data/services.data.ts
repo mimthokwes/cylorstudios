@@ -8,9 +8,8 @@ export const SERVICES_DATA: ServicePackage[] = [
     summary: 'Bangunan spesifik detail tinggi (Lobby, Rumah, Toko, Arena, dll).',
     deliverables: [
       'Eksterior & interior lengkap',
-      'Format .rbxm & .obj teroptimasi',
+      'Format .obj teroptimasi',
     ],
-    startingPrice: 'Rp 150.000',
     estimatedTime: '2 - 4 Hari',
   },
   {
@@ -22,7 +21,6 @@ export const SERVICES_DATA: ServicePackage[] = [
       'Koleksi objek/benda custom',
       'Ringan & ramah performa Roblox',
     ],
-    startingPrice: 'Rp 100.000',
     estimatedTime: '1 - 3 Hari',
   },
 ];

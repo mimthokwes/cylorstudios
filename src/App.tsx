@@ -41,13 +41,13 @@ export default function App() {
   };
 
   return (
-    <main className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-[#e0f2fe] via-[#bae6fd] to-[#7dd3fc] flex items-center justify-center p-2 sm:p-5 select-none">
+    <main className="relative w-screen h-screen overflow-hidden bg-gradient-to-br from-[#e0f2fe] via-[#bae6fd] to-[#7dd3fc] flex items-center justify-center p-2 pt-6 sm:p-5 select-none">
       {/* Radiant Atmospheric Sky Ambient Orbs */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[550px] bg-white/40 blur-[150px] rounded-full pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[600px] h-[400px] bg-sky-300/30 blur-[140px] rounded-full pointer-events-none" />
 
-      {/* Main Curved Viewport Frame (Inspired by ref-page.jpeg) */}
-      <div className="relative w-full h-full max-w-[1560px] max-h-[920px] rounded-[32px] sm:rounded-[44px] overflow-hidden border-2 border-white/80 shadow-[0_25px_90px_rgba(2,132,199,0.28)] flex flex-col justify-between bg-gradient-to-b from-[#dbeafe] via-[#bae6fd] to-[#38bdf8]">
+      {/* Main Curved Viewport Frame */}
+      <div className="relative w-full h-full max-w-[1560px] max-h-[920px] rounded-[24px] sm:rounded-[44px] overflow-hidden border-2 border-white/80 shadow-[0_25px_90px_rgba(2,132,199,0.28)] flex flex-col justify-between bg-gradient-to-b from-[#dbeafe] via-[#bae6fd] to-[#38bdf8]">
         
         {/* Sky Daylight Atmosphere & Cloud Highlights */}
         <div className="absolute inset-0 pointer-events-none z-0">
@@ -55,12 +55,12 @@ export default function App() {
           <div className="absolute bottom-0 left-0 right-0 h-[280px] bg-gradient-to-t from-sky-400/30 to-transparent" />
         </div>
 
-        {/* Studio Typography Watermark (Behind 3D Scene - persis 'New Way Of Living') */}
+        {/* Studio Typography Watermark */}
         <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none z-0">
-          <span className="text-[12vw] sm:text-[10vw] font-black tracking-widest text-white/45 uppercase leading-none select-none drop-shadow-sm">
+          <span className="text-[14vw] sm:text-[10vw] font-black tracking-widest text-white/40 uppercase leading-none select-none drop-shadow-sm">
             CYLOR
           </span>
-          <span className="text-xs sm:text-sm font-bold tracking-[0.35em] uppercase text-sky-900/40 mt-1">
+          <span className="text-[10px] sm:text-sm font-bold tracking-[0.22em] sm:tracking-[0.35em] uppercase text-sky-900/40 mt-1 text-center px-4">
             Roblox World Building & Asset Store
           </span>
         </div>
@@ -74,7 +74,7 @@ export default function App() {
           wireframe={wireframe}
         />
 
-        {/* Floating Top Navbar (With Smooth Concave Notch) */}
+        {/* Floating Top Navbar */}
         <TopNavbar
           activeMode={activeMode}
           setActiveMode={setActiveMode}
@@ -83,7 +83,7 @@ export default function App() {
           totalAssetsCount={ASSETS_DATA.length}
         />
 
-        {/* Floating Left Control & Social Rail (Upper Flank - Bebas Tabrakan) */}
+        {/* Floating Left Control & Social Rail */}
         <LeftControlRail
           autoRotate={autoRotate}
           onToggleAutoRotate={() => setAutoRotate((prev) => !prev)}
@@ -94,18 +94,20 @@ export default function App() {
           onResetCamera={handleResetCamera}
         />
 
-        {/* Floating Bottom Left Studio Dock (With Smooth Organic Tail Curve) */}
+        {/* Floating Bottom Left Studio Dock (Desktop Only) */}
         <BottomLeftDock
           assets={filteredAssets.length > 0 ? filteredAssets : ASSETS_DATA}
           selectedAssetId={activeAsset.id}
           onSelectAsset={handleSelectAsset}
         />
 
-        {/* Floating Bottom Right Asset Card (With Smooth Circular Notch) */}
+        {/* Floating Bottom Right Asset Card */}
         <BottomRightCard
           activeMode={activeMode}
           activeAsset={activeAsset}
           services={SERVICES_DATA}
+          assets={filteredAssets.length > 0 ? filteredAssets : ASSETS_DATA}
+          onSelectAsset={handleSelectAsset}
         />
 
         {/* Interactive Mouse Hint (Center Bottom) */}

@@ -17,11 +17,21 @@ export function RobloxModel({
   targetSize = 4.2,
   wireframe = false,
 }: RobloxModelProps) {
-  // 1. Muat file material (.mtl)
-  const materials = useLoader(MTLLoader, mtlPath);
+  // Encode URI to safely handle spaces in directory and file names
+  const safeMtlPath = useMemo(() => encodeURI(mtlPath), [mtlPath]);
+  const safeObjPath = useMemo(() => encodeURI(objPath), [objPath]);
+
+  // 1. Muat file material (.mtl) dan arahkan resourcePath untuk tekstur PNG
+  const materials = useLoader(MTLLoader, safeMtlPath, (loader) => {
+    const lastSlash = safeMtlPath.lastIndexOf('/');
+    if (lastSlash !== -1) {
+      const resourceBase = safeMtlPath.substring(0, lastSlash + 1);
+      loader.setResourcePath(resourceBase);
+    }
+  });
 
   // 2. Muat file geometri (.obj) dan pasang material
-  const obj = useLoader(OBJLoader, objPath, (loader) => {
+  const obj = useLoader(OBJLoader, safeObjPath, (loader) => {
     materials.preload();
     loader.setMaterials(materials);
   });
@@ -62,6 +72,10 @@ export function RobloxModel({
             (m as THREE.MeshStandardMaterial).wireframe = wireframe;
           }
           m.side = THREE.DoubleSide;
+          const anyMat = m as any;
+          if (anyMat.map) {
+            anyMat.map.colorSpace = THREE.SRGBColorSpace;
+          }
           return m;
         };
 
