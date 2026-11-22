@@ -2,26 +2,6 @@ import type { RobloxAsset } from '../types/portfolio.types';
 
 export const ASSETS_DATA: RobloxAsset[] = [
   {
-    id: 'alfamart',
-    title: 'Minimarket Alfamart',
-    category: 'Commercial',
-    description: 'Bangunan Alfamart modern lengkap dengan fasad merah-kuning ikonik, kanopi kaca, rak etalase belanja, dan tekstur part realistis.',
-    stats: {
-      partsCount: '1,850+ Parts',
-      dimensions: '90x65 Studs',
-      fileFormat: '.obj & Tekstur',
-    },
-    thumbnailUrl: '/thumbnails/alfamart.svg',
-    modelPaths: {
-      obj: '/model building roblos/alfamart/.obj/alfamart.obj',
-      mtl: '/model building roblos/alfamart/.obj/alfamart.mtl',
-    },
-    externalLinks: {
-      builtByBitUrl: 'https://builtbybit.com/resources/roblox',
-      fastworkUrl: 'https://fastwork.id/user/cylorstudios',
-    },
-  },
-  {
     id: 'rumah-1',
     title: 'Rumah Modern Minimalis 1',
     category: 'Residential',
@@ -35,6 +15,26 @@ export const ASSETS_DATA: RobloxAsset[] = [
     modelPaths: {
       obj: '/model building roblos/rumah 1/.obj/r1.obj',
       mtl: '/model building roblos/rumah 1/.obj/r1.mtl',
+    },
+    externalLinks: {
+      builtByBitUrl: 'https://builtbybit.com/resources/roblox',
+      fastworkUrl: 'https://fastwork.id/user/cylorstudios',
+    },
+  },
+  {
+    id: 'alfamart',
+    title: 'Minimarket Alfamart',
+    category: 'Commercial',
+    description: 'Bangunan Alfamart modern lengkap dengan fasad merah-kuning ikonik, kanopi kaca, rak etalase belanja, dan tekstur part realistis.',
+    stats: {
+      partsCount: '1,850+ Parts',
+      dimensions: '90x65 Studs',
+      fileFormat: '.obj & Tekstur',
+    },
+    thumbnailUrl: '/thumbnails/alfamart.svg',
+    modelPaths: {
+      obj: '/model building roblos/alfamart/.obj/alfamart.obj',
+      mtl: '/model building roblos/alfamart/.obj/alfamart.mtl',
     },
     externalLinks: {
       builtByBitUrl: 'https://builtbybit.com/resources/roblox',

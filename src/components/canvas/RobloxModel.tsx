@@ -59,25 +59,34 @@ export function RobloxModel({
       -center.z * scaleFactor
     );
 
+    // Cache material agar ratusan part yang berbagi material tidak digandakan berulang kali
+    const materialCache = new Map<THREE.Material, THREE.Material>();
+
+    const updateMaterial = (mat: THREE.Material) => {
+      const cached = materialCache.get(mat);
+      if (cached) return cached;
+
+      const m = mat.clone();
+      if ('wireframe' in m) {
+        (m as THREE.MeshStandardMaterial).wireframe = wireframe;
+      }
+      // Gunakan FrontSide untuk part solid guna memangkas beban rasterisasi poligon hingga 50%
+      // DoubleSide hanya jika material transparan (misal kaca/kanopi)
+      m.side = m.transparent ? THREE.DoubleSide : THREE.FrontSide;
+      const anyMat = m as any;
+      if (anyMat.map) {
+        anyMat.map.colorSpace = THREE.SRGBColorSpace;
+      }
+      materialCache.set(mat, m);
+      return m;
+    };
+
     // Aktifkan bayangan dan perbaiki material properties
     cloned.traverse((child) => {
       if ((child as THREE.Mesh).isMesh) {
         const mesh = child as THREE.Mesh;
         mesh.castShadow = true;
         mesh.receiveShadow = true;
-
-        const updateMaterial = (mat: THREE.Material) => {
-          const m = mat.clone();
-          if ('wireframe' in m) {
-            (m as THREE.MeshStandardMaterial).wireframe = wireframe;
-          }
-          m.side = THREE.DoubleSide;
-          const anyMat = m as any;
-          if (anyMat.map) {
-            anyMat.map.colorSpace = THREE.SRGBColorSpace;
-          }
-          return m;
-        };
 
         if (Array.isArray(mesh.material)) {
           mesh.material = mesh.material.map(updateMaterial);
@@ -93,14 +102,21 @@ export function RobloxModel({
   // 4. Bersihkan alokasi memori WebGL
   useEffect(() => {
     return () => {
+      const disposedMaterials = new Set<THREE.Material>();
       normalizedScene.traverse((child) => {
         if ((child as THREE.Mesh).isMesh) {
           const mesh = child as THREE.Mesh;
           mesh.geometry?.dispose();
           if (Array.isArray(mesh.material)) {
-            mesh.material.forEach((m) => m.dispose());
-          } else if (mesh.material) {
+            mesh.material.forEach((m) => {
+              if (!disposedMaterials.has(m)) {
+                m.dispose();
+                disposedMaterials.add(m);
+              }
+            });
+          } else if (mesh.material && !disposedMaterials.has(mesh.material)) {
             mesh.material.dispose();
+            disposedMaterials.add(mesh.material);
           }
         }
       });

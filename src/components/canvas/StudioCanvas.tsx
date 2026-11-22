@@ -33,8 +33,13 @@ export const StudioCanvas = forwardRef<StudioCanvasHandle, StudioCanvasProps>(
       <div className="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing">
         <Canvas
           shadows
+          dpr={[1, 1.5]}
           camera={{ position: [5.6, 4.2, 7.2], fov: 38 }}
-          gl={{ antialias: true, alpha: true, preserveDrawingBuffer: true }}
+          gl={{
+            antialias: true,
+            alpha: true,
+            powerPreference: 'high-performance',
+          }}
         >
           {/* Daylight Sky Lighting */}
           <ambientLight intensity={1.3} color="#f0f9ff" />
@@ -77,14 +82,16 @@ export const StudioCanvas = forwardRef<StudioCanvasHandle, StudioCanvasProps>(
             />
           )}
 
-          {/* Soft Ground Shadow on Sky Floor */}
+          {/* Soft Ground Shadow on Sky Floor (baked once per asset for 60fps performance) */}
           <ContactShadows
+            key={activeAsset.id}
             position={[0, 0, 0]}
             opacity={0.45}
             scale={12}
             blur={2.4}
             far={4}
             resolution={512}
+            frames={1}
             color="#0c4a6e"
           />
 
