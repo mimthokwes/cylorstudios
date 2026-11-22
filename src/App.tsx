@@ -15,7 +15,7 @@ export default function App() {
 
   // 3D Canvas Controls
   const [autoRotate, setAutoRotate] = useState<boolean>(true);
-  const [showGrid, setShowGrid] = useState<boolean>(false);
+  const [showGrid, setShowGrid] = useState<boolean>(true);
   const [wireframe, setWireframe] = useState<boolean>(false);
 
   const canvasRef = useRef<StudioCanvasHandle>(null);

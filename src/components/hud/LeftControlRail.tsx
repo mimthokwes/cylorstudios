@@ -68,7 +68,7 @@ export function LeftControlRail({
         {/* Ground Grid Toggle */}
         <button
           onClick={onToggleGrid}
-          title="Tampilkan Garis Grid"
+          title={showGrid ? 'Sembunyikan Garis Grid' : 'Tampilkan Garis Grid'}
           className={`group relative p-2 sm:p-2.5 rounded-full transition-colors ${
             showGrid
               ? 'bg-slate-900 text-white shadow-sm'
@@ -77,7 +77,7 @@ export function LeftControlRail({
         >
           <Grid className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
           <span className="absolute left-full ml-3 px-2 py-1 rounded-md bg-slate-900 text-[10px] text-white font-medium whitespace-nowrap opacity-0 pointer-events-none group-hover:opacity-100 transition-opacity shadow-lg">
-            Toggle Grid
+            {showGrid ? 'Sembunyikan Grid' : 'Tampilkan Grid'}
           </span>
         </button>
 

@@ -1,6 +1,6 @@
 import { Suspense, forwardRef, useImperativeHandle, useRef } from 'react';
 import { Canvas } from '@react-three/fiber';
-import { OrbitControls, ContactShadows, Environment } from '@react-three/drei';
+import { OrbitControls, ContactShadows, Environment, Grid } from '@react-three/drei';
 import type { OrbitControls as OrbitControlsImpl } from 'three-stdlib';
 import { RobloxModel } from './RobloxModel';
 import { CanvasLoader } from './CanvasLoader';
@@ -60,11 +60,20 @@ export const StudioCanvas = forwardRef<StudioCanvasHandle, StudioCanvasProps>(
           {/* Rim light */}
           <pointLight position={[0, 9, -7]} intensity={1.5} color="#e0f2fe" />
 
-          {/* Grid Helper if enabled */}
+          {/* Roblox Stud Grid Helper if enabled */}
           {showGrid && (
-            <gridHelper
-              args={[24, 24, '#ffffff', 'rgba(255,255,255,0.2)']}
+            <Grid
               position={[0, -0.01, 0]}
+              args={[24, 24]}
+              cellSize={0.8}
+              cellThickness={0.9}
+              cellColor="#e0f2fe"
+              sectionSize={4}
+              sectionThickness={1.4}
+              sectionColor="#ffffff"
+              fadeDistance={26}
+              fadeStrength={1.2}
+              infiniteGrid
             />
           )}
 
